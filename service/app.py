@@ -21,11 +21,17 @@ def load_model(path):
 def load_data(path):
     return pd.read_csv(path, index_col=0)
 
-X_train = load_data('X_train_final.csv')
-X_test = load_data('X_test_final.csv')
-y_train = load_data('y_train.csv')
-y_test = load_data('y_test.csv')
-coef_df = load_data('coef_df.csv')
+# X_train = load_data('X_train_final.csv')
+# X_test = load_data('X_test_final.csv')
+# y_train = load_data('y_train.csv')
+# y_test = load_data('y_test.csv')
+# coef_df = load_data('coef_df.csv')
+
+X_train = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/X_train_final.csv')
+X_test = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/X_test_final.csv')
+y_train = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/y_train.csv')
+y_test = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/y_test.csv')
+coef_df = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/coef_df.csv')
 
 model = load_model('pipeline_inference.pkl')
 
