@@ -33,6 +33,8 @@ y_train = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/r
 y_test = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/y_test.csv')
 coef_df = load_data('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/coef_df.csv')
 
+# pd.read_csv('https://raw.githubusercontent.com/Vadimius1010/hse_ml_hw1/refs/heads/main/service/X_test_final.csv', index_col=0)
+
 model = load_model('pipeline_inference.pkl')
 
 # объединю для удобного EDA
@@ -180,14 +182,15 @@ with col2:
         st.info("**Загрузите CSV файл для начала работы**")
         st.stop()
 
-    uploaded_df = load_data(uploaded_file)
+    uploaded_df = pd.read_csv(uploaded_file, index_col=0) #load_data(uploaded_file)
     st.write(f"**Файл {uploaded_file.name} сохранен, делаем предсказание:**")
 
 try:
     pred_test = np.exp(model.predict(uploaded_df)) # делал логарифмирование при обучении
-except:
+except Exception as e:
     st.header("Что-то пошло не так!")
     st.write('Загрузите подходящий файл')
+    st.write(e)
     st.stop()
 
 st.header("Результаты предсказания по файлу")
