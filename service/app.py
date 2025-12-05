@@ -21,13 +21,13 @@ def load_model(path):
 def load_data(path):
     return pd.read_csv(path, index_col=0)
 
-X_train = load_data('../data/X_train_final.csv')
-X_test = load_data('../data/X_test_final.csv')
-y_train = load_data('../data/y_train.csv')
-y_test = load_data('../data/y_test.csv')
-coef_df = load_data('../data/coef_df.csv')
+X_train = load_data('X_train_final.csv')
+X_test = load_data('X_test_final.csv')
+y_train = load_data('y_train.csv')
+y_test = load_data('y_test.csv')
+coef_df = load_data('coef_df.csv')
 
-model = load_model('../pipeline_inference.pkl')
+model = load_model('pipeline_inference.pkl')
 
 # объединю для удобного EDA
 df_train = pd.concat([X_train, y_train], axis=1)
